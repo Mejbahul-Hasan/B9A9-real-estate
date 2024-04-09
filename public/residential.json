@@ -1,0 +1,50 @@
+[
+    {
+      "id": "01",
+      "estate_title": "Modern Loft in Arts District",
+      "segment_name": "Premium",
+      "description": "This modern loft offers a sophisticated urban living experience. With sleek design and high-end finishes, it's perfect for those who appreciate contemporary style.",
+      "price": "$850,000",
+      "status": "sale",
+      "area": "1800 sq ft",
+      "location": "Los Angeles, California",
+      "facilities": ["open-plan layout", "rooftop terrace", "fitness center"],
+      "image": "https://i.ibb.co/4dhkLvK/douglas-sheppard-9r-Yf-G8s-WRVo-unsplash.jpg"
+    },
+    {
+      "id": "02",
+      "estate_title": "Charming Cottage by the Lake",
+      "segment_name": "Standard",
+      "description": "Escape to this charming cottage nestled by the serene lake. Enjoy peaceful mornings and picturesque views in this cozy retreat.",
+      "price": "$1,200/week",
+      "status": "rent",
+      "area": "1200 sq ft",
+      "location": "Lake Tahoe, Nevada",
+      "facilities": ["fireplace", "dock", "deck"],
+      "image": "https://i.ibb.co/t3v1XYX/evelyn-paris-XJn-P4-L958ds-unsplash.jpg"
+    },
+    {
+      "id": "03",
+      "estate_title": "Spacious Townhouse in Suburbia",
+      "segment_name": "Standard",
+      "description": "This spacious townhouse offers suburban living at its finest. With multiple bedrooms and a private backyard, it's perfect for families seeking comfort and convenience.",
+      "price": "$400,000",
+      "status": "sale",
+      "area": "2200 sq ft",
+      "location": "Charlotte, North Carolina",
+      "facilities": ["backyard", "garage", "community pool"],
+      "image": "https://i.ibb.co/6mjMNRV/Francesca-tosolini-t-Hk-JAMc-O3-QE-unsplash.jpg"
+    },
+    {
+      "id": "04",
+      "estate_title": "Sunny Condo with City Views",
+      "segment_name": "Premium",
+      "description": "Enjoy the vibrant city life from this sunny condo with panoramic views. With floor-to-ceiling windows and modern amenities, it's a true urban oasis.",
+      "price": "$3,000/month",
+      "status": "rent",
+      "area": "1000 sq ft",
+      "location": "San Francisco, California",
+      "facilities": ["city views", "balcony", "fitness center"],
+      "image": "https://i.ibb.co/rGZ42tK/todd-kent-178j8t-Jr-Nlc-unsplash.jpg"
+    }
+  ]

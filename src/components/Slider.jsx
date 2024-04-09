@@ -10,8 +10,8 @@ import 'swiper/css/scrollbar';
 
 
 const Slider = () => {
-    return (
-        <Swiper
+  return (
+    <Swiper
       // install Swiper modules
       modules={[Navigation, Pagination, Scrollbar, A11y]}
       spaceBetween={50}
@@ -22,11 +22,20 @@ const Slider = () => {
       onSwiper={(swiper) => console.log(swiper)}
       onSlideChange={() => console.log('slide change')}
     >
-      <SwiperSlide>Slide 1</SwiperSlide>
-      <SwiperSlide>Slide 2</SwiperSlide>
-      <SwiperSlide>Slide 3</SwiperSlide>
+      <SwiperSlide>
+        <img className='h-[650px] w-full' src="/public/sliderPicture/property3.jpg" alt="" />
+      </SwiperSlide>
+      <SwiperSlide>
+        <img className='h-[650px] w-full' src="/public/sliderPicture/property2.jpg" alt="" />
+      </SwiperSlide>
+      <SwiperSlide>
+        <img className='h-[650px] w-full' src="/public/sliderPicture/property1.jpg" alt="" />
+      </SwiperSlide>
+      <SwiperSlide>
+        <img className='h-[650px] w-full' src="/public/sliderPicture/property4.jpg" alt="" />
+      </SwiperSlide>
     </Swiper>
-    );
+  );
 };
 
 export default Slider;
