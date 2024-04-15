@@ -15,7 +15,7 @@ const RegisterPage = () => {
         console.log(name, email, photo, password);
 
         // create user
-        createUser(email, password)
+        createUser(email, password, photo, name)
             .then(result => {
                 console.log(result.user)
             })

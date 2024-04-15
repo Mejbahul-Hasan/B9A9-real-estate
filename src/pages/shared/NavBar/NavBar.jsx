@@ -4,18 +4,19 @@ import { AuthContext } from "../../../providers/AuthProviders";
 
 const NavBar = () => {
 
-    const { user, logOut } = useContext(AuthContext);
+    const { user, logOut, createUser } = useContext(AuthContext);
 
     const handleSignOut = () => {
         logOut()
-            .then()
-            .catch()
+            .then(()=> alert('Logged out successfully'))
+            .catch(error=> console.error(error))
     }
 
     const navLinks = <>
         <li><NavLink to="/">Home</NavLink></li>
         <li><NavLink to="/login">Log in</NavLink></li>
         <li><NavLink to="/register">Register</NavLink></li>
+        <li><NavLink to="/estate-details">Estate Details</NavLink></li>
     </>
 
     return (
@@ -42,9 +43,10 @@ const NavBar = () => {
                     user ? <>
                         <div tabIndex={0} role="button" className="btn btn-ghost btn-circle avatar">
                             <div className="w-10 rounded-full">
-                                <img alt="Tailwind CSS Navbar component" src={user.photo} />
+                                <img alt="Tailwind CSS Navbar component" src={createUser.photo} />
                             </div>
                         </div>
+                        <span>{user.email}</span>
                         <button onClick={handleSignOut} className="btn">Sign Out</button>
                     </>
                         : <Link to="/login" className="btn">Login</Link>
