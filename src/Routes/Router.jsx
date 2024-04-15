@@ -6,6 +6,7 @@ import LoginPage from "../pages/LoginPage/LoginPage";
 import RegisterPage from "../pages/RegisterPage/RegisterPage";
 import EstateDetails from "../pages/EstateDetails/EstateDetails";
 import PrivateRoute from "./PrivateRoute";
+import UpdateProfile from "../pages/UpdateProfile/UpdateProfile";
 
 const router = createBrowserRouter([
     {
@@ -28,6 +29,10 @@ const router = createBrowserRouter([
         {
             path: "/estate-details",
             element: <PrivateRoute><EstateDetails></EstateDetails></PrivateRoute>
+        },
+        {
+            path: "/update-profile",
+            element: <PrivateRoute><UpdateProfile></UpdateProfile></PrivateRoute>
         }
       ],
     },

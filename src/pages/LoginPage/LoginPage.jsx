@@ -1,10 +1,13 @@
 import { useContext } from "react";
-import { Link } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../providers/AuthProviders";
 
 const LoginPage = () => {
 
-    const { signIn } = useContext(AuthContext);
+    const { signIn, signInWithGoogle, signInWithGithub } = useContext(AuthContext);
+    const location = useLocation();
+    const navigate = useNavigate();
+    console.log("Location in the Login", location)
 
     const handleLogin = e => {
         e.preventDefault();
@@ -14,6 +17,30 @@ const LoginPage = () => {
         signIn(email, password)
             .then(result => {
                 console.log(result.user)
+                e.target.reset();
+                navigate(location.state ? location.state : '/');
+            })
+            .catch(error => {
+                console.error(error)
+            })
+    }
+
+    const handleGoogleSignIn = () => {
+        signInWithGoogle()
+            .then(result => {
+                console.log(result.user)
+                navigate(location.state ? location.state : '/');
+            })
+            .catch(error => {
+                console.error(error)
+            })
+    }
+
+    const handleGithubSignIn = () => {
+        signInWithGithub()
+            .then(result => {
+                console.log(result.user)
+                navigate(location.state ? location.state : '/');
             })
             .catch(error => {
                 console.error(error)
@@ -45,6 +72,13 @@ const LoginPage = () => {
                         </div>
                         <p>New Member? Please <Link to="/register"><button className="btn btn-link">Register</button></Link> </p>
                     </form>
+                    <div className="text-center">
+                        <h2>Connect with</h2>
+                        <p>
+                            <button onClick={handleGoogleSignIn} className="btn btn-link">Google</button>
+                            <button onClick={handleGithubSignIn} className="btn btn-link">GitHub</button>
+                        </p>
+                    </div>
                 </div>
             </div>
         </div>

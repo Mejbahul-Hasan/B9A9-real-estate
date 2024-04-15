@@ -1,4 +1,5 @@
 import { MdLocationPin } from "react-icons/md";
+import { Link } from "react-router-dom";
 
 
 const Card = ({ property }) => {
@@ -22,7 +23,7 @@ const Card = ({ property }) => {
                     <div className="badge badge-outline">{price}</div>
                     <div className="badge badge-outline">{segment_name}</div>
                 </div>
-                <button className="btn btn-sm">View Property</button>
+                <Link to='/estate-details'><button className="btn btn-sm">View Property</button></Link>
             </div>
         </div>
     );

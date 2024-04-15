@@ -18,6 +18,7 @@ const RegisterPage = () => {
         createUser(email, password, photo, name)
             .then(result => {
                 console.log(result.user)
+                e.target.reset();
             })
             .catch(error => {
                 console.error(error)

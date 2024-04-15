@@ -8,15 +8,14 @@ const NavBar = () => {
 
     const handleSignOut = () => {
         logOut()
-            .then(()=> alert('Logged out successfully'))
-            .catch(error=> console.error(error))
+            .then(() => alert('Logged out successfully'))
+            .catch(error => console.error(error))
     }
 
     const navLinks = <>
         <li><NavLink to="/">Home</NavLink></li>
-        <li><NavLink to="/login">Log in</NavLink></li>
-        <li><NavLink to="/register">Register</NavLink></li>
         <li><NavLink to="/estate-details">Estate Details</NavLink></li>
+        <li><NavLink to="/update-profile">Update Profile</NavLink></li>
     </>
 
     return (
@@ -30,7 +29,7 @@ const NavBar = () => {
                         {navLinks}
                     </ul>
                 </div>
-                <a className="btn btn-ghost text-xl">SweetHome</a>
+                <Link className="btn btn-ghost text-xl" to="/">SweetHome</Link>
             </div>
             <div className="navbar-center hidden lg:flex">
                 <ul className="menu menu-horizontal px-1">
@@ -47,7 +46,7 @@ const NavBar = () => {
                             </div>
                         </div>
                         <span>{user.email}</span>
-                        <button onClick={handleSignOut} className="btn">Sign Out</button>
+                        <button onClick={handleSignOut} className="btn">Log Out</button>
                     </>
                         : <Link to="/login" className="btn">Login</Link>
                 }
