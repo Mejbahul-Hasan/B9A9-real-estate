@@ -1,14 +1,16 @@
 import { useContext } from "react";
 import { Link, NavLink } from "react-router-dom";
 import { AuthContext } from "../../../providers/AuthProviders";
+import { toast } from 'react-toastify';
+import "react-toastify/dist/ReactToastify.css";
 
 const NavBar = () => {
 
-    const { user, logOut, createUser } = useContext(AuthContext);
+    const { user, logOut } = useContext(AuthContext);
 
     const handleSignOut = () => {
         logOut()
-            .then(() => alert('Logged out successfully'))
+            .then(() => toast.success("Logout Successful !"))
             .catch(error => console.error(error))
     }
 
@@ -37,20 +39,15 @@ const NavBar = () => {
                 </ul>
             </div>
             <div className="navbar-end">
-
                 {
                     user ? <>
-                        <div tabIndex={0} role="button" className="btn btn-ghost btn-circle avatar">
-                            <div className="w-10 rounded-full">
-                                <img alt="Tailwind CSS Navbar component" src={createUser.photo} />
-                            </div>
+                        <div className="tooltip tooltip-left" data-tip={user.displayName || "User not found"} >
+                            <button className="btn btn-ghost"><img className="w-10 rounded-full" alt="Tailwind CSS Navbar component" src={user?.photoURL || "https://i.ibb.co/rGZ42tK/todd-kent-178j8t-Jr-Nlc-unsplash.jpg"} /></button>
                         </div>
-                        <span>{user.email}</span>
-                        <button onClick={handleSignOut} className="btn">Log Out</button>
+                        <button onClick={handleSignOut} className="btn btn-sm">Log Out</button>
                     </>
                         : <Link to="/login" className="btn">Login</Link>
                 }
-
             </div>
         </div>
     );

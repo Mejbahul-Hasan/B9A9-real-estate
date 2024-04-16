@@ -1,10 +1,16 @@
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { Link } from "react-router-dom";
 import { AuthContext } from "../../providers/AuthProviders";
+import { toast } from 'react-toastify';
+import "react-toastify/dist/ReactToastify.css";
+import { FaEye, FaEyeSlash } from "react-icons/fa";
 
 const RegisterPage = () => {
+    const [registerError, setRegisterError] = useState('');
+    const [registerSuccess, setRegisterSuccess] = useState('');
+    const [showPassword, setShowPassword] = useState(false);
 
-    const { createUser } = useContext(AuthContext);
+    const { createUser, updateUserProfile } = useContext(AuthContext);
 
     const handleRegister = e => {
         e.preventDefault();
@@ -14,16 +20,36 @@ const RegisterPage = () => {
         const password = e.target.password.value;
         console.log(name, email, photo, password);
 
+        // reset error/success
+        setRegisterError('');
+        setRegisterSuccess('');
+
+        if (password.length < 6) {
+            setRegisterError(toast.error('Password must by at least 6 character'));
+            return;
+        }
+        else if (!/[A-Z]/.test(password)) {
+            setRegisterError(toast.error('Password must have an Uppercase letter'));
+            return;
+        }
+        else if (!/[a-z]/.test(password)) {
+            setRegisterError(toast.error('Password must have an Lowercase letter'));
+            return;
+        }
+
         // create user
-        createUser(email, password, photo, name)
+        createUser(email, password)
             .then(result => {
-                console.log(result.user)
-                e.target.reset();
+                updateUserProfile(name, photo)
+                    .then(() => {
+                        console.log(result.user);
+                        setRegisterSuccess(toast.success("Registration Successful !"));
+                        e.target.reset();
+                    })
             })
             .catch(error => {
-                console.error(error)
+                console.error(setRegisterError(toast.error('Already Registered !')));
             })
-
     }
 
     return (
@@ -56,7 +82,16 @@ const RegisterPage = () => {
                             <label className="label">
                                 <span className="label-text">Password</span>
                             </label>
-                            <input type="password" name="password" placeholder="Password" className="input input-bordered" required />
+                            <div className="relative">
+                                <input
+                                    type={showPassword ? "text" : "password"}
+                                    name="password" placeholder="Password" className="input input-bordered w-full" required />
+                                <span className="absolute top-4 right-6" onClick={() => setShowPassword(!showPassword)}>
+                                    {
+                                        showPassword ? <FaEyeSlash /> : <FaEye />
+                                    }
+                                </span>
+                            </div>
                         </div>
                         <div className="form-control mt-6">
                             <button className="btn btn-primary">Register</button>

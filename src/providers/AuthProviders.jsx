@@ -1,6 +1,6 @@
 import { createContext, useEffect, useState } from "react";
 import auth from "../firebase/firebase.config";
-import { GithubAuthProvider, GoogleAuthProvider, createUserWithEmailAndPassword, onAuthStateChanged, signInWithEmailAndPassword, signInWithPopup, signOut } from "firebase/auth";
+import { GithubAuthProvider, GoogleAuthProvider, createUserWithEmailAndPassword, onAuthStateChanged, signInWithEmailAndPassword, signInWithPopup, signOut, updateProfile } from "firebase/auth";
 import PropTypes from 'prop-types';
 
 export const AuthContext = createContext(null);
@@ -13,9 +13,16 @@ const AuthProviders = ({ children }) => {
     const [user, setUser] = useState(null);
     const [loading, setLoading] = useState(true);
 
-    const createUser = (email, password, photo, name) => {
+    const createUser = (email, password) => {
         setLoading(true);
-        return createUserWithEmailAndPassword(auth, email, password, photo, name);
+        return createUserWithEmailAndPassword(auth, email, password);
+    }
+
+    const updateUserProfile = (name, photo) => {
+        return updateProfile(auth.currentUser, {
+            displayName: name, 
+            photoURL: photo
+          })
     }
 
     const signIn = (email, password) => {
@@ -23,12 +30,12 @@ const AuthProviders = ({ children }) => {
         return signInWithEmailAndPassword(auth, email, password);
     }
 
-    const signInWithGoogle = ()=>{
+    const signInWithGoogle = () => {
         setLoading(true);
         return signInWithPopup(auth, googleProvider)
     }
 
-    const signInWithGithub = ()=>{
+    const signInWithGithub = () => {
         setLoading(true);
         return signInWithPopup(auth, githubProvider)
     }
@@ -40,7 +47,6 @@ const AuthProviders = ({ children }) => {
 
     useEffect(() => {
         const unSubscribe = onAuthStateChanged(auth, currentUser => {
-            console.log('observing in the useEffect of AuthProvider', currentUser);
             setUser(currentUser);
             setLoading(false);
         });
@@ -56,6 +62,7 @@ const AuthProviders = ({ children }) => {
         signIn,
         signInWithGoogle,
         signInWithGithub,
+        updateUserProfile,
         logOut
     }
 

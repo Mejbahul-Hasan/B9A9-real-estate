@@ -1,27 +1,31 @@
 import { useContext } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../providers/AuthProviders";
+import { toast } from 'react-toastify';
+import "react-toastify/dist/ReactToastify.css";
+import { useForm } from "react-hook-form"
 
 const LoginPage = () => {
 
     const { signIn, signInWithGoogle, signInWithGithub } = useContext(AuthContext);
     const location = useLocation();
     const navigate = useNavigate();
-    console.log("Location in the Login", location)
 
     const handleLogin = e => {
         e.preventDefault();
         const email = e.target.email.value;
         const password = e.target.password.value;
         console.log(email, password);
+
         signIn(email, password)
             .then(result => {
                 console.log(result.user)
+                toast.success("Login Successful !")
                 e.target.reset();
                 navigate(location.state ? location.state : '/');
             })
             .catch(error => {
-                console.error(error)
+                console.error(toast.error('Invalid Password'))
             })
     }
 

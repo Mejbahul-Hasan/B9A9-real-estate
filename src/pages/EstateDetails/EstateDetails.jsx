@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import Properties from "../../hooks/Properties";
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 
 const EstateDetails = () => {
 
@@ -19,13 +19,13 @@ const EstateDetails = () => {
     const { estate_title, segment_name, description, price, status, area, location, facilities, image } = singleEstate || {};
 
     return (
-        <div className="hero min-h-screen bg-base-200">
+        <div className="hero bg-base-200 rounded-2xl">
             <div className="hero-content flex-col lg:flex-row">
-                <img src={image} className="max-w-sm rounded-lg shadow-2xl" />
+                <img src={image} className="w-96 h-80 rounded-lg shadow-2xl" />
                 <div>
-                    <h1 className="text-5xl font-bold">{estate_title}</h1>
+                    <h1 className="text-2xl font-bold">{estate_title}</h1>
                     <p className="py-6">{description}</p>
-                    <button className="btn btn-primary">Get Started</button>
+                    <Link to='/'><button className="btn btn-primary">Back to Home</button></Link>
                 </div>
             </div>
         </div>
