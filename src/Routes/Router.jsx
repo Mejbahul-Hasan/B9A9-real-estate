@@ -27,7 +27,7 @@ const router = createBrowserRouter([
             element: <RegisterPage/>
         },
         {
-            path: "/estate-details",
+            path: "/estate-details/:id",
             element: <PrivateRoute><EstateDetails></EstateDetails></PrivateRoute>
         },
         {

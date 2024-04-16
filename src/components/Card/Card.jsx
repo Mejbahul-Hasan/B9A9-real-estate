@@ -23,7 +23,7 @@ const Card = ({ property }) => {
                     <div className="badge badge-outline">{price}</div>
                     <div className="badge badge-outline">{segment_name}</div>
                 </div>
-                <Link to='/estate-details'><button className="btn btn-sm">View Property</button></Link>
+                <Link to={`/estate-details/${id}`}><button className="btn btn-sm">View Property</button></Link>
             </div>
         </div>
     );

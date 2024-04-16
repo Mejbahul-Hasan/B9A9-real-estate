@@ -23,16 +23,16 @@ const Slider = () => {
       onSlideChange={() => console.log('slide change')}
     >
       <SwiperSlide>
-        <img className='h-[650px] w-full' src="/public/sliderPicture/property3.jpg" alt="" />
+        <img className='h-[650px] w-full' src="../sliderPicture/property3.jpg" alt="" />
       </SwiperSlide>
       <SwiperSlide>
-        <img className='h-[650px] w-full' src="/public/sliderPicture/property2.jpg" alt="" />
+        <img className='h-[650px] w-full' src="../sliderPicture/property2.jpg" alt="" />
       </SwiperSlide>
       <SwiperSlide>
-        <img className='h-[650px] w-full' src="/public/sliderPicture/property1.jpg" alt="" />
+        <img className='h-[650px] w-full' src="../sliderPicture/property1.jpg" alt="" />
       </SwiperSlide>
       <SwiperSlide>
-        <img className='h-[650px] w-full' src="/public/sliderPicture/property4.jpg" alt="" />
+        <img className='h-[650px] w-full' src="../sliderPicture/property4.jpg" alt="" />
       </SwiperSlide>
     </Swiper>
   );
