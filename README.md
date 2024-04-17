@@ -15,4 +15,4 @@ Visit the live site: https://b9a9-sweethome.web.app/
 
 - Swiper Slider
 - Animate.css
-- React Hook Form
+- AOS Package

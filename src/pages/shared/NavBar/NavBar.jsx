@@ -40,7 +40,7 @@ const NavBar = () => {
             <div className="navbar-end">
                 {
                     user ? <>
-                        <div className="tooltip tooltip-left" data-tip={user.displayName || "User not found"} >
+                        <div className="tooltip tooltip-left" data-tip={user.displayName || "User name not found"} >
                             <button className="btn btn-ghost"><img className="w-10 rounded-full" alt="Tailwind CSS Navbar component" src={user?.photoURL || "https://i.ibb.co/rGZ42tK/todd-kent-178j8t-Jr-Nlc-unsplash.jpg"} /></button>
                         </div>
                         <button onClick={handleSignOut} className="btn btn-sm">Log Out</button>

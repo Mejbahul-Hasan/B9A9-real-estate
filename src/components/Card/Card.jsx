@@ -1,13 +1,19 @@
 import { MdLocationPin } from "react-icons/md";
 import { Link } from "react-router-dom";
-
+import Aos from 'aos';
+import 'aos/dist/aos.css'
+import { useEffect } from "react";
 
 const Card = ({ property }) => {
+
+    useEffect(() => {
+        Aos.init();
+    }, [])
 
     const { id, estate_title, segment_name, description, price, status, area, location, facilities, image } = property || {};
 
     return (
-        <div className="card w-96 bg-base-100 shadow-xl my-5 ml-20">
+        <div className="card w-96 bg-base-100 shadow-xl my-5 ml-20" data-aos="flip-left">
             <figure><img className="w-full h-60" src={image} alt="house" /></figure>
             <div className="card-body">
                 <h2 className="card-title">
