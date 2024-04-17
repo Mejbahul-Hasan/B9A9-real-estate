@@ -25,7 +25,8 @@ const LoginPage = () => {
                 navigate(location.state ? location.state : '/');
             })
             .catch(error => {
-                console.error(toast.error('Invalid Password'))
+                console.error(error)
+                toast.error('Invalid Password')
             })
     }
 
@@ -33,6 +34,7 @@ const LoginPage = () => {
         signInWithGoogle()
             .then(result => {
                 console.log(result.user)
+                toast.success("Login Successful !")
                 navigate(location.state ? location.state : '/');
             })
             .catch(error => {
@@ -44,6 +46,7 @@ const LoginPage = () => {
         signInWithGithub()
             .then(result => {
                 console.log(result.user)
+                toast.success("Login Successful !")
                 navigate(location.state ? location.state : '/');
             })
             .catch(error => {
