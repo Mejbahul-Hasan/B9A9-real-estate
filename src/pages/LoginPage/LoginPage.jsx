@@ -26,7 +26,7 @@ const LoginPage = () => {
             })
             .catch(error => {
                 console.error(error)
-                toast.error('Invalid Password')
+                toast.error('Invalid Password/Registration Required')
             })
     }
 
