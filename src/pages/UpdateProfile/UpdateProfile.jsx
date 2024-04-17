@@ -18,8 +18,8 @@ const UpdateProfile = () => {
                     .catch(error => {
                         console.error(error);
                     })
+                    window.location.reload();
     }
-
 
     return (
         <div className="hero bg-base-200 py-10 rounded-3xl">
@@ -31,7 +31,7 @@ const UpdateProfile = () => {
                     <form onSubmit={handleProfileUpdate}>
                         <label className="input input-bordered flex items-center gap-2">
                             Name
-                            <input type="text" name="name" className="grow" placeholder="Correct/Edited Name" />
+                            <input type="text" name="name" className="grow" placeholder="Correct/Edited Name" required />
                         </label>
                         <label className="input input-bordered flex items-center gap-2 my-5">
                             PhotoURL
