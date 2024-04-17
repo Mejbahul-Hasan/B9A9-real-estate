@@ -45,10 +45,12 @@ const RegisterPage = () => {
                         console.log(result.user);
                         setRegisterSuccess(toast.success("Registration Successful !"));
                         e.target.reset();
+                        window.location.reload();
                     })
             })
             .catch(error => {
-                console.error(setRegisterError(toast.error('Already Registered !')));
+                console.error(error);
+                setRegisterError(toast.error('Already Registered !'))
             })
     }
 
